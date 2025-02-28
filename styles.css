@@ -1,0 +1,188 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100vh;
+    padding: 20px;
+    background: url(pic2.jpg);
+    background-size: cover;
+    overflow-x: hidden; /* Prevent horizontal scrolling globally */
+    overflow-y: auto;
+}
+
+/* Main Sections */
+.todo-section, .pomodoro-section {
+    margin-top: 50px;
+    background: transparent;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 45%;
+    text-align: center; /* Already centers text, no need for flexbox */
+}
+
+/* Headings */
+h2 {
+    margin-bottom: 10px;
+}
+
+/* Inputs & Buttons */
+input {
+    width: 80%;
+    padding: 8px;
+    margin-right: 5px;
+}
+
+button {
+    padding: 8px 12px;
+    cursor: pointer;
+    background: brown;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: black;
+}
+
+/* Pomodoro Timer */
+#timer {
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+/* Task List */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 8px;
+    background: #eee;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Prevents overflow on smaller screens */
+}
+
+/* Live Date */
+#liveDate {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color: black;
+}
+
+/* Delete Button */
+.delete-button {
+    background-color: #b02d2d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: black;
+}
+
+/* Button Wrapper */
+.button-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+}
+
+/* Task Text */
+li span {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 100%; /* Allows long text to wrap naturally */
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+    body {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        padding: 10px;
+        background: url("pic1.jpg") repeat center center;
+        background-size: contain;
+    }
+
+    .todo-section, .pomodoro-section {
+        width: 90%;
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+    h2, #timer, #liveDate {
+        font-size: 2em;
+    }
+
+    input {
+        width: 90%;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+
+    li {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .button-wrapper {
+        display: flex;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .todo-section, .pomodoro-section {
+        width: 90%;
+    }
+
+    h2, #timer, #liveDate {
+        font-size: 1.4em;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    ul {
+        width: 100%;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .button-wrapper {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    #liveDate {
+        font-size: 1.35em;
+        font-weight: 1000;
+        margin-bottom: 70px;
+    }
+}
