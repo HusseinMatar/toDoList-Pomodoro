@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List & Pomodoro Timer</title>
     <link rel="stylesheet" href="styles.css">
-    
 </head>
 <body>
+
+    <!-- To-Do List Section -->
     <div class="todo-section">
         <div id="liveDate"></div>
         <h2>To-Do List</h2>
@@ -16,6 +17,7 @@
         <ul id="taskList"></ul>
     </div>
     
+    <!-- Pomodoro Timer Section -->
     <div class="pomodoro-section">
         <h2>Pomodoro Timer</h2>
         <div id="timer">25:00</div>
@@ -23,14 +25,12 @@
         <button onclick="stopTimer()">Stop</button>
         <button onclick="resetTimer()">Reset</button>
     </div>
+
     <script>
         function updateLiveDate() {
             const date = new Date();
             document.getElementById("liveDate").innerText = date.toLocaleDateString("en-US", {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
             });
         }
         updateLiveDate();
@@ -71,7 +71,7 @@
         function resetTimer() {
             stopTimer();
             timeLeft = 1500;
-            document.getElementById("timer").innerText = "25:00";
+            updateTimerDisplay();
         }
 
         function addTask() {
@@ -82,31 +82,39 @@
             const taskList = document.getElementById("taskList");
             const li = document.createElement("li");
 
-            // Create Task Text
-            const taskSpan = document.createElement("span");
-            taskSpan.innerText = taskText;
-            taskSpan.style.flex = "1";
+            // Task Label (Checkbox + "Complete?" Text)
+            const label = document.createElement("label");
+            label.style.display = "flex";
+            label.style.alignItems = "center";
+            label.style.gap = "10px";
 
-            // Create Checkbox
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.onchange = () => taskSpan.style.textDecoration = checkbox.checked ? "line-through" : "none";
 
-            // Create Delete Button (Using Class Instead of Inline Styles)
+            const checkboxText = document.createElement("span");
+            checkboxText.innerText = "Complete?";
+            checkboxText.style.fontSize = "14px";
+            checkboxText.style.color = "gray";
+
+            label.append(checkbox, checkboxText);
+
+            // Task Text
+            const taskSpan = document.createElement("span");
+            taskSpan.innerText = taskText;
+            taskSpan.style.flex = "1";
+
+            // Delete Button
             const deleteButton = document.createElement("button");
-            deleteButton.innerText = "X";
+            deleteButton.innerText = "Delete";
             deleteButton.classList.add("delete-button");
             deleteButton.onclick = () => li.remove();
 
-            // Right-side container
-            const buttonWrapper = document.createElement("div");
-            buttonWrapper.classList.add("button-wrapper"); 
-            buttonWrapper.append(checkbox, deleteButton);
-
-            li.append(taskSpan, buttonWrapper);
+            li.append(label, taskSpan, deleteButton);
             taskList.appendChild(li);
             taskInput.value = "";
         }
     </script>
+
 </body>
 </html>

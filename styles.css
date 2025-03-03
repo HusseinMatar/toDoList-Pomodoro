@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -5,9 +6,9 @@ body {
     align-items: flex-start;
     height: 100vh;
     padding: 20px;
-    background: url(pic2.jpg);
+    background: url(pic2.jpg) no-repeat center center fixed;
     background-size: cover;
-    overflow-x: hidden; /* Prevent horizontal scrolling globally */
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
@@ -19,7 +20,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     width: 45%;
-    text-align: center; /* Already centers text, no need for flexbox */
+    text-align: center;
 }
 
 /* Headings */
@@ -27,13 +28,17 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* Inputs & Buttons */
-input {
+/* Input Fields */
+.todo-section input {
     width: 80%;
-    padding: 8px;
-    margin-right: 5px;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 12px; /* Makes typing easier */
+    border-radius: 6px;
 }
 
+/* Buttons */
 button {
     padding: 8px 12px;
     cursor: pointer;
@@ -60,12 +65,13 @@ ul {
 }
 
 li {
-    padding: 8px;
+    padding: 8px 10px;
+    font-size: 16px;
     background: #eee;
     margin: 5px 0;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Prevents overflow on smaller screens */
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 /* Live Date */
@@ -74,7 +80,6 @@ li {
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
-    color: black;
 }
 
 /* Delete Button */
@@ -90,21 +95,6 @@ li {
     background-color: black;
 }
 
-/* Button Wrapper */
-.button-wrapper {
-    display: flex;
-    gap: 15px;
-    margin-left: auto;
-}
-
-/* Task Text */
-li span {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    width: 100%; /* Allows long text to wrap naturally */
-}
-
 /* Responsive Styles */
 @media screen and (max-width: 1024px) {
     body {
@@ -113,37 +103,70 @@ li span {
         justify-content: center;
         height: auto;
         padding: 10px;
-        background: url("pic1.jpg") repeat center center;
+        background: url("pic3.jpg") repeat center center;
         background-size: contain;
     }
 
     .todo-section, .pomodoro-section {
-        width: 90%;
-        margin-top: 20px;
-        padding: 15px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .pomodoro-section button, .todo-section button {
+        margin-top: 10px;
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 14px 18px;
     }
 
     h2, #timer, #liveDate {
         font-size: 2em;
-    }
-
-    input {
-        width: 90%;
+        color: white;
     }
 
     button {
-        padding: 10px 15px;
-        font-size: 1em;
+        width: 80%;
+        padding: 12px 18px;
+        border-radius: 8px;
+        background: #002366; /* Darker blue for depth */
+        color: white;
+    }
+    
+    button:hover {
+        background: #1a1aff; /* Lighter blue hover effect */
+    }
+    
+    /* Delete Button */
+    .delete-button {
+        width: 80%;
+        padding: 10px;
+        border-radius: 8px;
+        background: #002366; /* Dark blue */
+        color: white;
+        font-weight: bold;
+    }
+    
+    .delete-button:hover {
+        background: #1a1aff; /* Lighter blue */
     }
 
     li {
-        flex-direction: row;
+        display: flex;
+        flex-direction: column;
         align-items: center;
+        text-align: center; /* Ensures the text inside is centered */
     }
 
-    .button-wrapper {
-        display: flex;
-        gap: 10px;
+    li span {
+        text-align: center;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    label {
+        margin-bottom: 12px;
+        margin-top: 10px;
     }
 }
 
@@ -156,33 +179,34 @@ li span {
         font-size: 1.4em;
     }
 
-    input {
-        width: 100%;
-    }
-
     button {
         width: 100%;
+        padding: 12px 15px;
     }
 
-    ul {
-        width: 100%;
-    }
-
-    li {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-    }
-
-    .button-wrapper {
-        width: 100%;
-        justify-content: space-between;
-        margin-top: 10px;
+    .pomodoro-section button {
+        margin-bottom: 10px;
+        padding: 14px 18px;
     }
 
     #liveDate {
         font-size: 1.35em;
-        font-weight: 1000;
+        font-weight: bold;
         margin-bottom: 70px;
     }
+
+    li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    li span {
+        text-align: center;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
 }
