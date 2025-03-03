@@ -28,9 +28,14 @@
 
     <script>
         function updateLiveDate() {
-            document.getElementById("liveDate").innerText = new Date().toLocaleDateString("en-US", {
-                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-            });
+            const date = new Date();
+            
+            const weekday = date.toLocaleDateString("en-US", { weekday: 'long' });
+            const day = String(date.getDate()).padStart(2, '0'); // Ensures "03" instead of "3"
+            const monthYear = date.toLocaleDateString("en-US", { month: 'long', year: 'numeric' });
+        
+            // Structure the date with a line break
+            document.getElementById("liveDate").innerHTML = `${weekday} <br> ${day} ${monthYear}`;
         }
         updateLiveDate();
 
