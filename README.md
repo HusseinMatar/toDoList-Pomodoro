@@ -2,8 +2,8 @@
 
 https://husseinmatar.github.io/toDoList-Pomodoro/
 
-A productivity web app that combines a To-Do List for task management and a Pomodoro Timerto improve focus and efficiency.
-The project features two completely different UI styles for **desktop and mobile, creating a dynamic and tailored user experience.  
+A productivity web app that combines a To-Do List for task management and a Pomodoro Timer to improve focus and efficiency.
+The project features two completely different UI styles for desktop and mobile, creating a dynamic and tailored user experience.  
 
 ##Features  
 ✅ To-Do List – Add, mark as complete, and delete tasks easily.  
