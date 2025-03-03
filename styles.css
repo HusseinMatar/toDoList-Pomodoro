@@ -6,7 +6,7 @@ body {
     align-items: flex-start;
     height: 100vh;
     padding: 20px;
-    background: url(pic2.jpg) no-repeat center center fixed;
+    background: url("pic2.jpg") no-repeat center center fixed;
     background-size: cover;
     overflow-x: hidden;
     overflow-y: auto;
@@ -34,8 +34,9 @@ h2 {
     max-width: 500px;
     margin: 0 auto;
     text-align: center;
-    padding: 12px; /* Makes typing easier */
+    padding: 12px;
     border-radius: 6px;
+    font-size: 16px; /* Prevents iOS zooming issue */
 }
 
 /* Buttons */
@@ -71,6 +72,7 @@ li {
     margin: 5px 0;
     display: flex;
     align-items: center;
+    justify-content: center; /* Ensures task text is always centered */
     flex-wrap: wrap;
 }
 
@@ -95,6 +97,13 @@ li {
     background-color: black;
 }
 
+/* Checkbox & Text */
+label {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Increase spacing between checkbox and text */
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 1024px) {
     body {
@@ -103,20 +112,27 @@ li {
         justify-content: center;
         height: auto;
         padding: 10px;
-        background: url("pic3.jpg") repeat center center;
+        background: url("pic4.jpg") repeat center center;
         background-size: contain;
     }
 
     .todo-section, .pomodoro-section {
         width: 100%;
-        align-items: center;
     }
 
+    /* Button Styling */
     .pomodoro-section button, .todo-section button {
-        margin-top: 10px;
-        width: 100%;
-        margin-bottom: 15px;
+        margin: 10px 0;
+        width: 80%;
         padding: 14px 18px;
+        background: linear-gradient(45deg, #ff007f, #8000ff);
+        color: white;
+        box-shadow: 0 0 10px rgba(255, 0, 127, 0.8); /* Pink glow */
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        box-shadow: 0 0 20px rgba(255, 0, 127, 1); /* Stronger glow */
     }
 
     h2, #timer, #liveDate {
@@ -124,49 +140,24 @@ li {
         color: white;
     }
 
-    button {
-        width: 80%;
-        padding: 12px 18px;
-        border-radius: 8px;
-        background: #002366; /* Darker blue for depth */
-        color: white;
-    }
-    
-    button:hover {
-        background: #1a1aff; /* Lighter blue hover effect */
-    }
-    
-    /* Delete Button */
-    .delete-button {
-        width: 80%;
-        padding: 10px;
-        border-radius: 8px;
-        background: #002366; /* Dark blue */
-        color: white;
-        font-weight: bold;
-    }
-    
-    .delete-button:hover {
-        background: #1a1aff; /* Lighter blue */
-    }
-
     li {
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: center; /* Ensures the text inside is centered */
-    }
-
-    li span {
         text-align: center;
-        width: 100%;
-        font-size: 16px;
-        font-weight: 500;
     }
 
+    /* Fix Checkbox & Text Spacing */
     label {
-        margin-bottom: 12px;
-        margin-top: 10px;
+        justify-content: flex-start;
+        margin: 15px 0;
+    }
+
+    label input[type="checkbox"] {
+        margin-right: 3px !important;
+        width: 18px;
+        height: 18px;
+        -webkit-appearance: checkbox; /* Fix for iOS Safari */
     }
 }
 
@@ -175,38 +166,17 @@ li {
         width: 90%;
     }
 
-    h2, #timer, #liveDate {
-        font-size: 1.4em;
-    }
-
-    button {
-        width: 100%;
-        padding: 12px 15px;
-    }
-
-    .pomodoro-section button {
-        margin-bottom: 10px;
-        padding: 14px 18px;
-    }
-
-    #liveDate {
-        font-size: 1.35em;
-        font-weight: bold;
-        margin-bottom: 70px;
-    }
-
     li {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        margin-bottom: 10px;
     }
 
-    li span {
-        text-align: center;
-        width: 100%;
-        font-size: 16px;
-        font-weight: 500;
+    label input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
     }
-    
+
+    .todo-section input {
+        width: 90%;
+        max-width: 100%;
+    }
 }
